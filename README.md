@@ -12,7 +12,7 @@ from the project root (assuming dev setup).
 
 
 ```python
-BASE_DIR = 'playbooks_from_tests'
+BASE_DIR = 'callback-testing-playbooks'
 for name in names:
     print('')
     print('Processing test {}'.format(name))
