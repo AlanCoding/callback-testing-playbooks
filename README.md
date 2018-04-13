@@ -13,6 +13,7 @@ from the project root (assuming dev setup).
 
 ```python
 BASE_DIR = 'callback-testing-playbooks'
+names = [test_name for test_name in locals().keys() if test_name.startswith('test_')]
 for name in names:
     print('')
     print('Processing test {}'.format(name))
@@ -30,3 +31,25 @@ for name in names:
                     f.write(v)
 ```
 
+In order to make a PR against this repo, you probably want to do this
+at the base folder of your AWX clone on your personal computer:
+
+```
+git clone https://github.com/AlanCoding/callback-testing-playbooks.git
+```
+
+Then, with the above code pasted into the test file, run the python file,
+and assuming `BASE_DIR` is kept the same, it should produce a meaningful
+diff with updates to the playbooks.
+
+#### How do I run these inside of AWX
+
+You need to install tower-cli and configure your login.
+You need a user with a username `admin`, and you must, yourself, be a
+superuser.
+
+```
+python run.py
+```
+
+That should create and run job templates for these playbooks.
