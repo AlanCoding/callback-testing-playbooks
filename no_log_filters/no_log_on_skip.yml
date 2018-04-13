@@ -1,0 +1,9 @@
+
+- name: skipped task args should be suppressed with no_log
+  connection: local
+  hosts: all
+  gather_facts: no
+  tasks:
+    - shell: echo "SENSITIVE"
+      no_log: true
+      when: false

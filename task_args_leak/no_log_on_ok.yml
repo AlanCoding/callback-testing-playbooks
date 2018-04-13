@@ -1,0 +1,11 @@
+
+- name: args should not be logged when no_log is set at the task or module level
+  connection: local
+  hosts: all
+  gather_facts: no
+  tasks:
+    - shell: echo "PUBLIC"
+    - shell: echo "PRIVATE"
+      no_log: true
+    - uri: uri=https://example.org username="PUBLIC" password="PRIVATE"
+    - copy: content="PRIVATE" destination="/tmp/tmp_no_log"

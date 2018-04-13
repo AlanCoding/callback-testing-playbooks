@@ -1,0 +1,11 @@
+
+- name: async task args should suppressed with no_log
+  connection: local
+  hosts: all
+  gather_facts: no
+  no_log: true
+  tasks:
+    - async: 10
+      poll: 1
+      shell: echo "SENSITIVE"
+      no_log: true

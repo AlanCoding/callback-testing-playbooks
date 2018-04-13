@@ -1,0 +1,12 @@
+
+- name: with_items tasks should be suppressed with no_log
+  connection: local
+  hosts: all
+  gather_facts: no
+  tasks:
+      - shell: echo {{ item }}
+        no_log: true
+        with_items: [ "SENSITIVE", "SENSITIVE-SKIPPED", "SENSITIVE-FAILED" ]
+        when: item != "SENSITIVE-SKIPPED"
+        failed_when: item == "SENSITIVE-FAILED"
+        ignore_errors: yes

@@ -1,0 +1,8 @@
+
+- name: custom set_stat calls should persist to the local disk so awx can save them
+  connection: local
+  hosts: all
+  tasks:
+    - set_stats:
+        data:
+          foo: "bar"

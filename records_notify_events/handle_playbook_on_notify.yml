@@ -1,0 +1,12 @@
+
+- name: handle playbook_on_notify events properly
+  connection: local
+  hosts: all
+  handlers:
+    - name: my_handler
+      debug: msg="My Handler"
+  tasks:
+    - debug: msg="My Task"
+      changed_when: true
+      notify:
+        - my_handler

@@ -1,0 +1,6 @@
+
+- name: sensitive environment variables should be stripped from events
+  connection: local
+  hosts: all
+  tasks:
+    - shell: echo "Hello, World!"

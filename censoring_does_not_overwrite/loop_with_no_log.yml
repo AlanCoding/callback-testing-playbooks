@@ -1,0 +1,12 @@
+
+- name: playbook variable should not be overwritten when using no log
+  connection: local
+  hosts: all
+  gather_facts: no
+  tasks:
+    - command: "{{ item }}"
+      register: command_register
+      no_log: True
+      with_items:
+        - "echo helloworld!"
+    - debug: msg="{{ command_register.results|map(attribute='stdout')|list }}"

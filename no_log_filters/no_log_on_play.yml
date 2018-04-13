@@ -1,0 +1,8 @@
+
+- name: args should not be logged when play-level no_log set
+  connection: local
+  hosts: all
+  gather_facts: no
+  no_log: true
+  tasks:
+      - shell: echo "SENSITIVE"

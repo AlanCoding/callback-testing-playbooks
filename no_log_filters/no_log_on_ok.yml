@@ -1,0 +1,8 @@
+
+- name: args should not be logged when task-level no_log is set
+  connection: local
+  hosts: all
+  gather_facts: no
+  tasks:
+    - shell: echo "SENSITIVE"
+      no_log: true

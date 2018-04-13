@@ -1,0 +1,10 @@
+
+- name: failed args should not be logged when task-level no_log is set
+  connection: local
+  hosts: all
+  gather_facts: no
+  tasks:
+    - shell: echo "SENSITIVE"
+      no_log: true
+      failed_when: true
+      ignore_errors: true
